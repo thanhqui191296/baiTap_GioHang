@@ -1,6 +1,6 @@
 
 import './App.css'
-import BaiTapGioHang from './assets/baitapgiohang/baitapgiohang'
+import BaiTapGioHang from './assets/bai-tap-gio-hang/baitapgiohang'
 
 function App() {
   

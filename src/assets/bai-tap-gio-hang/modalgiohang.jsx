@@ -40,7 +40,9 @@ export default class ModalGioHang extends Component {
                                                 </td>
                                             <td>{spGH.price}$</td>
                                             <td>{spGH.soLuong * spGH.price}$</td>
-                                            <td><button onClick={()=> xoaGioHang(spGH.id)} className='btn btn-danger'>Xóa</button></td>
+                                            <td><button 
+                                            // onClick={()=> xoaGioHang(spGH.id)} 
+                                            data-toggle='modal' data-target='#modalXoaSP' className='btn btn-danger'onClick={()=> xoaGioHang(spGH.id)}  >Xóa</button></td>
                                         </tr>
                                         )
                                     })}
