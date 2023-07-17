@@ -3,7 +3,7 @@ import ModalGioHang from './modalgiohang'
 import DanhSachSanPham from './danhsachsanpham'
 import shoeData from '../data/data.json'
 import XemChiTiet from './xemchitiet'
-import Modal from './components/modal'
+
 
 export default class BaiTapGioHang extends Component {
   constructor(props) {
@@ -21,12 +21,7 @@ export default class BaiTapGioHang extends Component {
       //   quantity: 995,
       //   image: "http://svcy3.myclass.vn/images/adidas-prophere.png"
       // }
-      modal : 
-      {
-        status: "",
-        title: "Xóa Sản Phẩm",
-        content: "Bạn có muốn xóa sản phẩm hay không?"
-      }
+      
     }
   }
 
@@ -53,10 +48,13 @@ export default class BaiTapGioHang extends Component {
     // if (index !== -1){
     //   gioHangCapNhat.splice(index,1)
     // }
-    var gioHangCapNhat = this.state.gioHang.filter(sp => sp.id !== id)
+    if(window.confirm('Bạn có muốn xóa hay không')){
+      const gioHangCapNhat = this.state.gioHang.filter((sp) => sp.id !== id)
     this.setState({
       gioHang: gioHangCapNhat
     })
+    }
+    
   }
   tangGiamSoLuong = (id, tangGiam) => {
     var gioHangCapNhat = [...this.state.gioHang]
@@ -87,8 +85,8 @@ export default class BaiTapGioHang extends Component {
     return (
       <div className='container'>
         <h3 className='text-center'>ShoeShop</h3>
-        <Modal modal={this.state.modal} xoaGioHang={this.xoaGioHang}/>
-        <ModalGioHang tangGiamSoLuong={this.tangGiamSoLuong}  gioHang={this.state.gioHang}  modal={this.state.modal}/>
+        
+        <ModalGioHang tangGiamSoLuong={this.tangGiamSoLuong}  gioHang={this.state.gioHang} xoaGioHang={this.xoaGioHang}/>
         <div className='text-right'><span className='text-danger' style={{ cursor: 'pointer', fontSize: '17px', fontWeight: 'bold' }} data-toggle='modal' data-target='#modelId' >Giỏ hàng ({tongSoLuong})</span></div>
         <DanhSachSanPham themGioHang={this.themGioHang} mangSanPham={shoeData} hanldeChangeSanPham={this.hanldeChangeSanPham}/>
         {this.state.sanPhamChiTiet ? <><XemChiTiet sanPham={this.state.sanPhamChiTiet} /></> : null}

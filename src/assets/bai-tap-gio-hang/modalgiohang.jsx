@@ -1,10 +1,35 @@
 import React, { Component } from 'react'
+import Modal from './components/modal'
 
 export default class ModalGioHang extends Component {
+    state ={
+        showModal:false,
+        xoaGioHang:null,
+        
+    }
+    openModal= (id) =>{
+        this.setState({
+            showModal:true,
+            xoaGioHang:id
+        })
+    }
+    handleDelete = () =>{
+        const { xoaGioHang }= this.state
+        this.props.onDelete(xoaGioHang)
+        this.closeModal()
+    }
+    closeModal =() =>{
+        this.setState({
+            showModal:false,
+            xoaGioHang:null
+        })
+    }
     render() {
 
         const { gioHang,xoaGioHang,tangGiamSoLuong } = this.props
         return (
+            <>
+            <Modal/>
 
             <div className="modal fade" id="modelId" tabIndex={-1} role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                 <div className="modal-dialog" role="document">
@@ -69,6 +94,7 @@ export default class ModalGioHang extends Component {
                     </div>
                 </div>
             </div>
+            </>
 
 
 
