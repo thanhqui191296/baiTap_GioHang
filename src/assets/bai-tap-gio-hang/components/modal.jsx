@@ -2,23 +2,52 @@ import React, { Component } from 'react'
 
 export default class Modal extends Component {
     render() {
-        const {onDelete,closeModal,xoaGioHang} = this.props
+        const { modal, xoaGioHang } = this.props
         return (
-            <div className="modal" tabIndex={-1} id='modalXoaSP'>
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title">Xóa giỏ hàng</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div className="modal-body">
-                            <p>Bạn có muốn xóa sản phẩm này không?</p>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => onDelete(xoaGioHang)}>Ok</button>
-                            <button type="button" className="btn btn-primary" onClick={() =>closeModal()}>Close</button>
+            <div>
+                <div
+                    className="modal"
+                    tabIndex={-1}
+                    style={{
+                        display: "block",
+                    }}
+                >
+                    <div style={{
+                        position: 'fixed',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)'
+                    }} className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title">{modal.title}</h5>
+                                <button
+                                    type="button"
+                                    className="btn-close"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                />
+                            </div>
+                            <div className="modal-body">
+                                <p>{modal.content}</p>
+                            </div>
+                            <div className="modal-footer">
+                                <button
+                                    onClick={modal.onCancle}
+                                    type="button"
+                                    className="btn btn-secondary"
+                                    data-bs-dismiss="modal"
+                                >
+                                    Không
+                                </button>
+                                <button
+                                    onClick={modal.onOK}
+                                    type="button"
+                                    className="btn btn-primary"
+                                >
+                                    Okk
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
